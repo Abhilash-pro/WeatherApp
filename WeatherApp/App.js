@@ -3,23 +3,31 @@ import {
 	StyleSheet,
 	View,
 	Text,
-	TextInput,
+	ImageBackground,
 	KeyboardAvoidingView
 } from 'react-native';
 
+import getImageForWeather from './utils/getImageForWeather';
 import SearchInput from './components/SearchInput';
 
 export default class App extends React.Component {
 
   render(){
+	  const location = 'San Franscisco';
     return (
 		
 		<KeyboardAvoidingView
 		style ={styles.container}
 		behavior = "padding"
 		>
+		<ImageBackground 
+		source ={getImageForWeather('Clear')}
+		style ={styles.imageContainer}
+		imageStyle = {styles.image}
+		>
+		<View style ={styles.detailsContainer}>
         <Text style = {styles.textStyle, styles.largeText}>
-			San Francisco
+			{location}
          </Text>
 		 <Text style = {styles.textStyle, styles.smallText}>
 			Light Cloud
@@ -28,6 +36,8 @@ export default class App extends React.Component {
 		 24°
          </Text>
 		 <SearchInput placeholder = "Search any city"/>
+		 </View>
+		 </ImageBackground>
 		 </KeyboardAvoidingView>
      
     );
@@ -39,13 +49,27 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#34495E',
+  },
+  imageContainer:{
+	  flex: 1,
+  },
+  image:{
+	  flex: 1,
+	  width: null,
+	  height: null,
+	  resizeMode: 'cover',
+  },
+  detailsContainer:{
+	  flex: 1,
+	  justifyContent: 'center',
+	  backgroundColor: 'rgba(0,0,0,0)',
+	  paddingHorizontal: 20,
   },
  textStyle:{
    textAlign:'center',
    fontFamily: 'Roboto',
+   color: '#ffff',
  },
  largeText:{
 	 fontSize: 44,
