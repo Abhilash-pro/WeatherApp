@@ -28,7 +28,7 @@ export default class App extends React.Component {
 	};
 
 	componentDidMount(){
-        console.log('Component has Mounted!');
+      
 		this.setState({weather: 'Sleet'}, () =>
 		console.log(this.state),
 		);
