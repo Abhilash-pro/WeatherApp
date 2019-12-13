@@ -7,14 +7,17 @@ export default class SearchInput extends React.Component{
         this.state ={
             text: '',
         };
+        
     };
+
+    
 
     handleChangeText = text => {
         this.setState({text});
     };
 
     handleSubmitEditing = () =>{
-        const {onSumbit} =this.props;
+        const {onSubmit} =this.props;
         const {text } =this.state;
 
         if(!text) return ; 
@@ -33,7 +36,7 @@ export default class SearchInput extends React.Component{
                     value = {text}
                     placeholder = {placeholder}
                     underlineColorAndroid= "transparent"
-                    placeholderTextColor = "white"
+                    placeholderTextColor = "#fff"
                     style = {styles.textInput}
                     onChangeText = {this.handleChangeText}
                     onSubmitEditing = {this.handleSubmitEditing}
